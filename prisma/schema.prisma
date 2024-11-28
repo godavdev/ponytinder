@@ -1,0 +1,34 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Pony {
+  id          String  @id @unique @default(uuid())
+  name        String
+  phone       String  @unique
+  semester    Int
+  age         Int
+  carreer     String
+  description String
+  password    String
+  imageUrl    String
+  Matched     Match[] @relation("matched")
+  Matcher     Match[] @relation("matcher")
+}
+
+model Match {
+  id        String @id @unique @default(uuid())
+  matcherId String
+  Matcher   Pony   @relation(fields: [matcherId], references: [id], name: "matcher")
+  matchedId String
+  Matched   Pony   @relation(fields: [matchedId], references: [id], name: "matched")
+  status    String // PENDING, ACCEPTED, REJECTED
+}
