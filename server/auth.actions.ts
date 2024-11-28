@@ -1,6 +1,6 @@
 "use server"
 
-import { signIn } from "./auth"
+import { signIn, signOut as signout } from "./auth"
 
 interface Credentials {
   phone: string
@@ -18,5 +18,5 @@ export const login = async ({ phone, password }: Credentials) => {
 }
 
 export const signOut = async () => {
-  await signIn("signout", { redirect: false })
+  await signout({ redirect: false })
 }
