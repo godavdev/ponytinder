@@ -41,7 +41,6 @@ const {
           id: foundUser.id,
           name: foundUser.name,
           phone: foundUser.phone,
-          
         }
       },
     }),

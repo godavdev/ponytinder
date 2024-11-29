@@ -28,6 +28,14 @@ export const createPony = async ({
   imageUrl,
 }: Omit<Pony, "id">) => {
   try {
+    console.log(age,
+      carreer,
+      description,
+      name,
+      password,
+      phone,
+      semester,
+      imageUrl,)
     await prisma.pony.create({
       data: {
         age: Number(age),
